@@ -1,7 +1,7 @@
 package com.example.pos_webapp.Service.Implementation;
 
-import com.example.pos_webapp.Dto.AdminRequest;
-import com.example.pos_webapp.Dto.AdminResponse;
+import com.example.pos_webapp.Dto.requestDto.AdminRequest;
+import com.example.pos_webapp.Dto.responseDto.AdminResponse;
 import com.example.pos_webapp.Model.Admin;
 import com.example.pos_webapp.Repositories.AdminRepository;
 import com.example.pos_webapp.Service.AdminService;

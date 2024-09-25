@@ -1,4 +1,4 @@
-package com.example.pos_webapp.Dto;
+package com.example.pos_webapp.Dto.responseDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

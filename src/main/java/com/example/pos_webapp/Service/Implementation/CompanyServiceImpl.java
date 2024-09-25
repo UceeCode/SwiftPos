@@ -1,7 +1,7 @@
 package com.example.pos_webapp.Service.Implementation;
 
-import com.example.pos_webapp.Dto.CompanyRequest;
-import com.example.pos_webapp.Dto.CompanyResponse;
+import com.example.pos_webapp.Dto.requestDto.CompanyRequest;
+import com.example.pos_webapp.Dto.responseDto.CompanyResponse;
 import com.example.pos_webapp.Model.Company;
 import com.example.pos_webapp.Repositories.CompanyRepository;
 import com.example.pos_webapp.Service.CompanySevice;

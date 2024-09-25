@@ -1,7 +1,7 @@
 package com.example.pos_webapp.Controller;
 
-import com.example.pos_webapp.Dto.AdminRequest;
-import com.example.pos_webapp.Dto.AdminResponse;
+import com.example.pos_webapp.Dto.requestDto.AdminRequest;
+import com.example.pos_webapp.Dto.responseDto.AdminResponse;
 import com.example.pos_webapp.Service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;

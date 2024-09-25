@@ -1,7 +1,7 @@
 package com.example.pos_webapp.Service.Implementation;
 
-import com.example.pos_webapp.Dto.AddStoreRequest;
-import com.example.pos_webapp.Dto.AddStoreResponse;
+import com.example.pos_webapp.Dto.requestDto.AddStoreRequest;
+import com.example.pos_webapp.Dto.responseDto.AddStoreResponse;
 import com.example.pos_webapp.Model.AddStore;
 import com.example.pos_webapp.Repositories.AddStoreRepository;
 import com.example.pos_webapp.Service.AddStoreService;

@@ -2,13 +2,13 @@ package com.example.pos_webapp.Controller;
 
 import com.example.pos_webapp.Dto.requestDto.CompanyRequest;
 import com.example.pos_webapp.Dto.responseDto.CompanyResponse;
+import com.example.pos_webapp.Model.Company;
 import com.example.pos_webapp.Service.CompanySevice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/register")
@@ -22,5 +22,10 @@ public class CompanyController {
         companySevice.createCompany(companyRequest);
 
         return new CompanyResponse(companyRequest.getCompanyName());
+    }
+
+    @GetMapping(path = "/allcompanies")
+    public List<Company> getAllCompany(){
+        return companySevice.getAllCompanies();
     }
 }

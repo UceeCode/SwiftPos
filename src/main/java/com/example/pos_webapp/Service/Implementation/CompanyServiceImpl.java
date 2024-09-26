@@ -8,6 +8,8 @@ import com.example.pos_webapp.Service.CompanySevice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CompanyServiceImpl implements CompanySevice {
@@ -26,5 +28,9 @@ public class CompanyServiceImpl implements CompanySevice {
         Company saveCompany = companyRepository.save(company);
 
         return new CompanyResponse(saveCompany.getCompany_name());
+    }
+
+    public List<Company> getAllCompanies() {
+        return companyRepository.findAll();
     }
 }

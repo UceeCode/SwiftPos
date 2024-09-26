@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,5 +33,9 @@ public class CompanyServiceImpl implements CompanySevice {
 
     public List<Company> getAllCompanies() {
         return companyRepository.findAll();
+    }
+
+    public Optional<Company> getCompanyById(int company_id) {
+        return Optional.ofNullable(companyRepository.findById(Long.valueOf(company_id)).orElse(null));
     }
 }

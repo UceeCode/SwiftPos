@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/register")
@@ -27,5 +28,10 @@ public class CompanyController {
     @GetMapping(path = "/allcompanies")
     public List<Company> getAllCompany(){
         return companySevice.getAllCompanies();
+    }
+
+    @GetMapping(path = "/{company_id}")
+    public Optional<Company> getCompanyById(@PathVariable int company_id){
+        return companySevice.getCompanyById(company_id);
     }
 }

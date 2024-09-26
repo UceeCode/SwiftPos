@@ -8,6 +8,8 @@ import com.example.pos_webapp.Service.AddStoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AddStoreSeviceImpl implements AddStoreService {
@@ -24,5 +26,13 @@ public class AddStoreSeviceImpl implements AddStoreService {
        AddStore saveStore = addStoreRepository.save(addStore);
 
        return new AddStoreResponse(saveStore.getName());
+   }
+
+   public List<AddStore> getAllStore() {
+       return addStoreRepository.findAll();
+   }
+
+   public AddStore getStoreById(int store_id) {
+       return addStoreRepository.findById(Math.toIntExact(Long.valueOf(store_id))).orElse(null);
    }
 }

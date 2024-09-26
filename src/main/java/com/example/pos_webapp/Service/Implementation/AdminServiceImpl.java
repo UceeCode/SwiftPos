@@ -8,6 +8,8 @@ import com.example.pos_webapp.Service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
@@ -24,5 +26,9 @@ public class AdminServiceImpl implements AdminService {
         Admin saveAdmin = adminRepository.save(admin);
 
         return new AdminResponse(saveAdmin.getUsername());
+    }
+
+    public List<Admin> getAllAdmins() {
+        return adminRepository.findAll();
     }
 }

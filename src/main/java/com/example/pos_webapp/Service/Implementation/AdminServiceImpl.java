@@ -31,4 +31,8 @@ public class AdminServiceImpl implements AdminService {
     public List<Admin> getAllAdmins() {
         return adminRepository.findAll();
     }
+
+    public Admin getAdminById(int admin_id){
+        return adminRepository.findById(Math.toIntExact(Long.valueOf(admin_id))).orElse(null);
+    }
 }

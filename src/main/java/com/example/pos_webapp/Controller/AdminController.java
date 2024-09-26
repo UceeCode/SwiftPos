@@ -27,4 +27,9 @@ public class AdminController {
     public List<Admin> getAllAdmins() {
         return adminService.getAllAdmins();
     }
+
+    @GetMapping(path = "/{admin_id}")
+    public Admin getAdminById(@PathVariable int admin_id) {
+        return adminService.getAdminById(admin_id);
+    }
 }

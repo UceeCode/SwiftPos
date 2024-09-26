@@ -10,4 +10,6 @@ public interface AdminService {
     public AdminResponse createAdmin(AdminRequest adminRequest);
 
     List<Admin> getAllAdmins();
+
+    Admin getAdminById(int id);
 }

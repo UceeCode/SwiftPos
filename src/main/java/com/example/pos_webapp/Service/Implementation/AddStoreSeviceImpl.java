@@ -35,4 +35,21 @@ public class AddStoreSeviceImpl implements AddStoreService {
    public AddStore getStoreById(int store_id) {
        return addStoreRepository.findById(Math.toIntExact(Long.valueOf(store_id))).orElse(null);
    }
+
+   public AddStoreResponse updateStore(int store_id, AddStoreRequest addStoreRequest) {
+       AddStore existingStore = getStoreById(store_id);
+       existingStore.setName(addStoreRequest.getName());
+       existingStore.setManager(addStoreRequest.getManager());
+       existingStore.setLocation(addStoreRequest.getLocation());
+       existingStore.setStorephoneno(addStoreRequest.getStorephoneno());
+       existingStore.setStatus(addStoreRequest.getStatus());
+       AddStore saveStore = addStoreRepository.save(existingStore);
+       return new AddStoreResponse(saveStore.getName());
+   }
+
+   public AddStoreResponse deleteStore(int store_id) {
+       AddStore existingStore = getStoreById(store_id);
+       addStoreRepository.delete(existingStore);
+       return new AddStoreResponse(existingStore.getName() + " has been deleted");
+   }
 }

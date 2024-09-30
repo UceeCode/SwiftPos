@@ -32,4 +32,14 @@ public class AddStoreController {
         return addStoreService.getStoreById(store_id);
     }
 
+    @PutMapping("/{store_id}")
+    public AddStoreResponse updateStore(@PathVariable int store_id, @RequestBody @Validated AddStoreRequest addStoreRequest) {
+        return addStoreService.updateStore(store_id, addStoreRequest);
+    }
+
+    @DeleteMapping("/{store_id}")
+    public AddStoreResponse deleteStore(@PathVariable int store_id) {
+        return addStoreService.deleteStore(store_id);
+    }
+
 }

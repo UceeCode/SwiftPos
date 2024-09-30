@@ -12,4 +12,8 @@ public interface AddStoreService {
     public List<AddStore> getAllStore();
 
     public AddStore getStoreById(int id);
+
+    public AddStoreResponse updateStore(int id, AddStoreRequest addStoreRequest);
+
+    public AddStoreResponse deleteStore(int id);
 }

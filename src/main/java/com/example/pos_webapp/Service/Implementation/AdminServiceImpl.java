@@ -35,4 +35,22 @@ public class AdminServiceImpl implements AdminService {
     public Admin getAdminById(int admin_id){
         return adminRepository.findById(Math.toIntExact(Long.valueOf(admin_id))).orElse(null);
     }
+
+    public AdminResponse updateAdmin(int admin_id, AdminRequest adminRequest){
+        Admin existingAdmin = getAdminById(admin_id);
+        existingAdmin.setFullname(adminRequest.getFullname());
+        existingAdmin.setEmail(adminRequest.getEmail());
+        existingAdmin.setPhoneno(adminRequest.getPhoneno());
+        existingAdmin.setUsername(adminRequest.getUsername());
+        existingAdmin.setPassword(adminRequest.getPassword());
+
+        Admin saveAdmin = adminRepository.save(existingAdmin);
+        return new AdminResponse(saveAdmin.getUsername());
+    }
+
+    public AdminResponse deleteAdmin(int admin_id){
+        Admin existingAdmin = getAdminById(admin_id);
+        adminRepository.delete(existingAdmin);
+        return new AdminResponse(existingAdmin.getUsername() + " has been deleted");
+    }
 }

@@ -12,4 +12,8 @@ public interface AdminService {
     List<Admin> getAllAdmins();
 
     Admin getAdminById(int id);
+
+    public AdminResponse updateAdmin(int admin_id, AdminRequest adminRequest);
+
+    public AdminResponse deleteAdmin(int admin_id);
 }

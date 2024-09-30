@@ -32,4 +32,15 @@ public class AdminController {
     public Admin getAdminById(@PathVariable int admin_id) {
         return adminService.getAdminById(admin_id);
     }
+
+    @PutMapping("/{admin_id}")
+    public AdminResponse updateAdmin(@PathVariable int admin_id, @RequestBody @Validated AdminRequest adminRequest) {
+        adminService.updateAdmin(admin_id, adminRequest);
+        return new AdminResponse(adminRequest.getUsername());
+    }
+
+    @DeleteMapping("/{admin_id}")
+    public AdminResponse deleteAdmin(@PathVariable int admin_id) {
+        return adminService.deleteAdmin(admin_id);
+    }
 }

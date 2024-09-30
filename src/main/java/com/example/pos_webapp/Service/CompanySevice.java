@@ -15,4 +15,6 @@ public interface CompanySevice {
     Optional<Company> getCompanyById(int id);
 
     public CompanyResponse updateCompany(int id, CompanyRequest companyRequest);
+
+    public CompanyResponse deleteCompany(int id);
 }

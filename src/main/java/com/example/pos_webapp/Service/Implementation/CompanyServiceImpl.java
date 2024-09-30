@@ -52,6 +52,6 @@ public class CompanyServiceImpl implements CompanySevice {
     public CompanyResponse deleteCompany(int company_id) {
         Company existingCompany = companyRepository.findById(Long.valueOf(company_id)).orElse(null);
         companyRepository.delete(existingCompany);
-        return new CompanyResponse(existingCompany.getCompany_name());
+        return new CompanyResponse(existingCompany.getCompany_name() + " Deleted");
     }
 }

@@ -13,4 +13,6 @@ public interface CompanySevice {
     List<Company> getAllCompanies();
 
     Optional<Company> getCompanyById(int id);
+
+    public CompanyResponse updateCompany(int id, CompanyRequest companyRequest);
 }

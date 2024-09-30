@@ -34,4 +34,10 @@ public class CompanyController {
     public Optional<Company> getCompanyById(@PathVariable int company_id){
         return companySevice.getCompanyById(company_id);
     }
+
+    @PutMapping("/{id}")
+    public CompanyResponse updateCompany(@PathVariable int id, @RequestBody @Validated CompanyRequest companyRequest){
+        companySevice.updateCompany(id, companyRequest);
+        return new CompanyResponse(companyRequest.getCompanyName());
+    }
 }

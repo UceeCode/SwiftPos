@@ -38,4 +38,20 @@ public class CompanyServiceImpl implements CompanySevice {
     public Optional<Company> getCompanyById(int company_id) {
         return Optional.ofNullable(companyRepository.findById(Long.valueOf(company_id)).orElse(null));
     }
+
+    public CompanyResponse updateCompany(int company_id, CompanyRequest companyRequest) {
+        Company existingCompany = companyRepository.findById(Long.valueOf(company_id)).orElse(null);
+        existingCompany.setCompany_email(companyRequest.getCompanyEmail());
+        existingCompany.setCompany_name(companyRequest.getCompanyName());
+        existingCompany.setCompany_address(companyRequest.getCompanyAddress());
+        existingCompany.setCompany_logo(companyRequest.getCompanylogo());
+        existingCompany.setCompany_phoneno(companyRequest.getCompanyphoneno());
+        Company saveCompany = companyRepository.save(existingCompany);
+        return new CompanyResponse(saveCompany.getCompany_name());
+    }
+    public CompanyResponse deleteCompany(int company_id) {
+        Company existingCompany = companyRepository.findById(Long.valueOf(company_id)).orElse(null);
+        companyRepository.delete(existingCompany);
+        return new CompanyResponse(existingCompany.getCompany_name());
+    }
 }

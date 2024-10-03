@@ -17,7 +17,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
 
-
+    // Method to create a new company
     public CompanyResponse createCompany(CompanyRequest companyRequest) {
         Company company = new Company();
         company.setCompany_email(companyRequest.getCompanyEmail());
@@ -26,35 +26,53 @@ public class CompanyServiceImpl implements CompanyService {
         company.setCompany_logo(companyRequest.getCompanylogo());
         company.setCompany_phoneno(companyRequest.getCompanyphoneno());
 
-        Company saveCompany = companyRepository.save(company);
+        Company savedCompany = companyRepository.save(company);
 
-        return new CompanyResponse(saveCompany.getCompany_name());
+        return new CompanyResponse(savedCompany.getCompany_name());
     }
 
+    // Method to retrieve all companies
     public List<Company> getAllCompanies() {
         return companyRepository.findAll();
     }
 
-    public Optional<Company> getCompanyById(int company_id) {
-        return Optional.ofNullable(companyRepository.findById(Long.valueOf(company_id)).orElse(null));
+    // Method to retrieve a company by its ID
+    public Optional<Company> getCompanyById(int companyId) {
+        return companyRepository.findById((long) companyId);
     }
 
-    public CompanyResponse updateCompany(int company_id, CompanyRequest companyRequest) {
-        Company existingCompany = companyRepository.findById(Long.valueOf(company_id)).orElse(null);
-        existingCompany.setCompany_email(companyRequest.getCompanyEmail());
-        existingCompany.setCompany_name(companyRequest.getCompanyName());
-        existingCompany.setCompany_address(companyRequest.getCompanyAddress());
-        existingCompany.setCompany_logo(companyRequest.getCompanylogo());
-        existingCompany.setCompany_phoneno(companyRequest.getCompanyphoneno());
-        Company saveCompany = companyRepository.save(existingCompany);
-        return new CompanyResponse(saveCompany.getCompany_name());
-    }
-    public CompanyResponse deleteCompany(int company_id) {
-        Company existingCompany = companyRepository.findById(Long.valueOf(company_id)).orElse(null);
-        companyRepository.delete(existingCompany);
-        return new CompanyResponse(existingCompany.getCompany_name() + " Deleted");
+
+    // Method to update an existing company
+    public CompanyResponse updateCompany(int companyId, CompanyRequest companyRequest) {
+        Optional<Company> companyOptional = companyRepository.findById((long) companyId);
+        if (companyOptional.isPresent()) {
+            Company existingCompany = companyOptional.get();
+            existingCompany.setCompany_email(companyRequest.getCompanyEmail());
+            existingCompany.setCompany_name(companyRequest.getCompanyName());
+            existingCompany.setCompany_address(companyRequest.getCompanyAddress());
+            existingCompany.setCompany_logo(companyRequest.getCompanylogo());
+            existingCompany.setCompany_phoneno(companyRequest.getCompanyphoneno());
+
+            Company updatedCompany = companyRepository.save(existingCompany);
+            return new CompanyResponse(updatedCompany.getCompany_name());
+        } else {
+            throw new IllegalArgumentException("Company not found with ID: " + companyId);
+        }
     }
 
+    // Method to delete a company
+    public CompanyResponse deleteCompany(int companyId) {
+        Optional<Company> companyOptional = companyRepository.findById((long) companyId);
+        if (companyOptional.isPresent()) {
+            Company existingCompany = companyOptional.get();
+            companyRepository.delete(existingCompany);
+            return new CompanyResponse(existingCompany.getCompany_name() + " Deleted");
+        } else {
+            throw new IllegalArgumentException("Company not found with ID: " + companyId);
+        }
+    }
+
+    // Method to save a single company
     public void saveSingleCompany(Company company) {
         companyRepository.save(company);
     }

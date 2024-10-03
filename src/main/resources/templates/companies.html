@@ -18,6 +18,7 @@
                 <th>Company Logo</th>
                 <th>Company Email</th>
                 <th>Company Phone Number</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -31,6 +32,7 @@
                 </td>
                 <td th:text="${company.company_email}">Email</td>
                 <td th:text="${company.company_phoneno}">Phone Number</td>
+                <td><a th:href="@{/register/updatecompany/{company_id}(company_id=${company.company_id})}" class="btn btn-primary" style="background-color: black; color: white">Update</a></td>
             </tr>
             </tbody>
         </table>

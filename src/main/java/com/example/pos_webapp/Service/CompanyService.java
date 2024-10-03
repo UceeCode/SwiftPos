@@ -8,15 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CompanyService {
-    public CompanyResponse createCompany(CompanyRequest companyRequest);
-
+    CompanyResponse createCompany(CompanyRequest companyRequest);
     List<Company> getAllCompanies();
-
-    Optional<Company> getCompanyById(int id);
-
-    public CompanyResponse updateCompany(int id, CompanyRequest companyRequest);
-
-    public CompanyResponse deleteCompany(int id);
-
-    public void saveSingleCompany(Company company);
+    Optional<Company> getCompanyById(int companyId);
+    CompanyResponse updateCompany(int companyId, CompanyRequest companyRequest); // Changed here
+    CompanyResponse deleteCompany(int companyId);
+    void saveSingleCompany(Company company);
 }

@@ -4,7 +4,7 @@ import com.example.pos_webapp.Dto.requestDto.CompanyRequest;
 import com.example.pos_webapp.Dto.responseDto.CompanyResponse;
 import com.example.pos_webapp.Model.Company;
 import com.example.pos_webapp.Repositories.CompanyRepository;
-import com.example.pos_webapp.Service.CompanySevice;
+import com.example.pos_webapp.Service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CompanyServiceImpl implements CompanySevice {
+public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
 
@@ -53,5 +53,9 @@ public class CompanyServiceImpl implements CompanySevice {
         Company existingCompany = companyRepository.findById(Long.valueOf(company_id)).orElse(null);
         companyRepository.delete(existingCompany);
         return new CompanyResponse(existingCompany.getCompany_name() + " Deleted");
+    }
+
+    public void saveSingleCompany(Company company) {
+        companyRepository.save(company);
     }
 }

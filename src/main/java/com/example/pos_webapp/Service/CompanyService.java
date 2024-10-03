@@ -7,7 +7,7 @@ import com.example.pos_webapp.Model.Company;
 import java.util.List;
 import java.util.Optional;
 
-public interface CompanySevice {
+public interface CompanyService {
     public CompanyResponse createCompany(CompanyRequest companyRequest);
 
     List<Company> getAllCompanies();
@@ -17,4 +17,6 @@ public interface CompanySevice {
     public CompanyResponse updateCompany(int id, CompanyRequest companyRequest);
 
     public CompanyResponse deleteCompany(int id);
+
+    public void saveSingleCompany(Company company);
 }
